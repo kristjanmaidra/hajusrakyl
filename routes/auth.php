@@ -8,12 +8,22 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
+    
+
+    Route::get('/blog-list', [BlogController::class, 'show'])->name('blog.index');
+    Route::get('/blog-add', [BlogController::class, 'create'])->name('blog.add');
+    Route::post('/blog-add', [BlogController::class, 'store'])->name('store');
+    Route::post('/blog-list', [BlogController::class, 'show'])->name('show');
+    Route::get('/blog-list', [BlogController::class, 'show'])->name('show');
+  
+    
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])

@@ -30,7 +30,7 @@ Object.entries(components).forEach(([path, component]) => {
     const name = path.match(/^\.\/(.+\/)*(.+)\.vue$/)[2];
     app.component(name, defineAsyncComponent(component));
 });
-
+app.mixin({ methods: { route } });
 app.use(plugin);
 app.mount(el);
 

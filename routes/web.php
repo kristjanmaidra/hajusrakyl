@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\MapController;
 use Illuminate\Foundation\Application;
@@ -26,8 +27,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/weather', [WeatherController::class, 'index']);
+Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
 Route::get('/map', [MapController::class, 'index']);
+Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog-create', [BlogController::class, 'create'])->name('blog.create');
+Route::get('/blog-edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::get('/blog-create', [BlogController::class, 'create'])->name('blog.create');
 
 
 Route::get('/dashboard', function () {

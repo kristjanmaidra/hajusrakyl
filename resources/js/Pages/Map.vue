@@ -1,6 +1,14 @@
 <template>
-    <div class="w-full h-96">
+    <div>
+        <div class="w-full h-96">
         <div class="h-full w-full" id="map" ref="map"></div>
+        <div class="w-full h-96 bg-red-200">
+            <form action="">
+                <label for="Latitude"></label>
+                <input type="text">
+            </form>
+        </div>
+    </div>
     </div>
 </template>
 
@@ -11,8 +19,9 @@ import { ref } from "vue";
 let map = ref(null);
 
 const loader = new Loader({
-    apiKey: "AIzaSyB0WTGG9d8la0rFb6uCgkSgmURvwiSOMsg",
+    apiKey: "",
     version: "weekly",
+
 });
 loader.load().then(() => {
     let myLatLng = { lat: 58.24806, lng: 22.50389 };
@@ -20,5 +29,16 @@ loader.load().then(() => {
         zoom: 8,
         center: myLatLng,
     });
+    map.addListener('click', (e) => {
+        console.log(e);
+        console.log(e.latLng.toJSON());
+
+        new google.maps.Marker({
+            position: e.LatLng,
+            map: map,
+        });
+    })
+
+window.initMap = initMap;
 });
 </script>

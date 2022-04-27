@@ -2,8 +2,8 @@
     <div class="flex items-center font-semibold gap-2" v-if="data">
         <img :src="weatherIcon" alt="" />
         <p>{{ data.name }}</p>
-        <p><span class="font-normal">temp:</span>{{data.main.temp}}</p>
-        <p><span class="font-normal">feels_like:</span>{{data.main.feels_like}}</p>
+        <p><span class="font-normal">Temp:</span>{{data.main.temp}}</p>
+        <p><span class="font-normal">Feels like:</span>{{data.main.feels_like}}</p>
         <p><span class="font-normal">Description:</span>{{data.weather[0].description}}</p>
     </div>
 </template>
