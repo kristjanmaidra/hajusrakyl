@@ -16,6 +16,7 @@ class WeatherController extends Controller
     public function index()
     {
        $url = 'https://api.openweathermap.org/data/2.5/weather?lat=58.2&lon=22.5&appid=66455badace9b59499362bdf9e4c69e0&units'.config('services.weather.key');
+    //    $url = 'https://api.openweathermap.org/data/2.5/weather?=kuressaare&units=metric&appid='.config('services.weather.key');
 
        $data = $this->cacheData($url);
        return Inertia::render('Weather', [

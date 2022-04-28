@@ -5,11 +5,11 @@
             <Link :href="route('weather.index')">
                 <p class="text-white">Weather</p>
             </Link>
-            <Link :href="route('weather.index')">
-                <p class="text-white">Weather</p>
+            <Link :href="route('blog.index')">
+                <p class="text-white">Blog</p>
             </Link>
-            <Link :href="route('weather.index')">
-                <p class="text-white">Weather</p>
+            <Link :href="route('map.index')">
+                <p class="text-white">Map</p>
             </Link>
         </div>
     </nav>

@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
-
-    
-
-    Route::get('/blog-list', [BlogController::class, 'show'])->name('blog.index');
-    Route::get('/blog-add', [BlogController::class, 'create'])->name('blog.add');
-    Route::post('/blog-add', [BlogController::class, 'store'])->name('store');
-    Route::post('/blog-list', [BlogController::class, 'show'])->name('show');
-    Route::get('/blog-list', [BlogController::class, 'show'])->name('show');
-  
     
     Route::post('register', [RegisteredUserController::class, 'store']);
 
@@ -63,4 +54,14 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+    //show
+    Route::get('/blog-list', [BlogController::class, 'show'])->name('blog.index');
+    //add
+    Route::get('/blog-add', [BlogController::class, 'create'])->name('blog.add');
+    Route::post('/blog-add', [BlogController::class, 'store']);
+    //edit
+    Route::get('/blog-edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::post('/blog-edit/{blog}', [BlogController::class, 'update'])->name('blog.update');
+    //delete
+    Route::post('/blog-delete/{blog}', [BlogController::class, 'destory'])->name('blog.delete');
 });

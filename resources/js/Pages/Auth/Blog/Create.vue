@@ -1,16 +1,18 @@
 <template>
-    <div class="max-w-screen-lg w-full mx-auto mt-12">
-        <div class="flex flex-col w-full">
-            <form class="flex flex-col gap-6" @submit.prevent="submit">
+    <div class="max-w-screen-lg w-full px-6 lg:mx-auto mt-12">
+        <div class="flex flex-col w-full justify-center items-center">
+            <h1 class="text-gray-500 text-2xl mb-6">New Blog Post</h1>
+            <span v-if="form.wasSuccessful" class="text-green-500">Data saved</span>
+            <form class="flex flex-col w-full max-w-md gap-6" @submit.prevent="submit">
                 <div class="flex flex-col">
                     <label for="tile">Title</label>
                     <input class="rounded active:border-inherit" name="description" v-model="form.title" type="text">
-                    <textarea v-model="form.description" name="description" id=""></textarea>
                 </div>
                 <div class="flex flex-col">
                     <label for="">Description</label>
-                    <textarea name="description" id="" ></textarea>
+                    <textarea class="rounded" v-model="form.description" name="description" id=""></textarea>
                 </div>
+                <button class="rounded w-full bg-gray-800 text-white font-bold uppercase px-2 py-1" type="submit">Submit</button>
             </form>
         </div>
     </div>
@@ -19,18 +21,19 @@
 export default { layoutName: "Authenticated" };
 </script>
 <script setup>
-import { Head } from "@inertiajs/inertia-vue3";
-import { Link } from "@inertiajs/inertia-vue3";
 import { useForm } from '@inertiajs/inertia-vue3'
+import { inject } from '@vue/runtime-core';
 
 
+const route = inject('route')
 const form = useForm({
-      name: null,
-      description: null,
+      title: "",
+      description: "",
     });
 
-    function storeTopic() {
-      form.post('/topics')
-    }
-
+const submit = () => {
+    form.post(route('blog.add'), {
+        onSuccess: () => form.reset()
+    });
+};
 </script>

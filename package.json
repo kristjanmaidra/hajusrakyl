@@ -28,6 +28,8 @@
         "@headlessui/react": "^1.6.0",
         "@headlessui/vue": "^1.6.0",
         "@heroicons/react": "^1.0.6",
-        "@vitejs/plugin-vue": "^2.2.4"
+        "@heroicons/vue": "^1.0.6",
+        "@vitejs/plugin-vue": "^2.2.4",
+        "@vue-hero-icons/solid": "^1.7.2"
     }
 }

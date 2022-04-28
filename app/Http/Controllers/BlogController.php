@@ -8,11 +8,15 @@ use Inertia\Inertia;
 
 class BlogController extends Controller
 {
-    public function index() {
-        return Inertia::render('Auth/Blog/Index');
+    public function index() 
+    {
+        return Inertia::render('Blog', [
+            'posts' => Blog::with('comments')->get()
+        ]);
     }
 
-    public function create() {
+    public function create() 
+    {
         return Inertia::render('Auth/Blog/Create');
     }
 
@@ -22,6 +26,7 @@ class BlogController extends Controller
             'title' => 'required',
             'description' => 'required',
         ]));
+        return redirect()->back();
     }
 
     public function edit(Blog $blog)
@@ -44,5 +49,12 @@ class BlogController extends Controller
     {
         $blog->delete();
         return redirect()->back();
+    }
+
+    public function show()
+    {
+        return Inertia::render('Auth/Blog/Index', [
+            'posts' => Blog::all()
+        ]);
     }
 }
