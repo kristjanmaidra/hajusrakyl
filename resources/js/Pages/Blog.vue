@@ -16,7 +16,7 @@
                  />
             </div>
         </DisclosureButton>
-        <DisclosurePanel class="px-4 pt-4 pb-2 text-sm text-gray-500">
+        <DisclosurePanel>
           If you're unhappy with your purchase for any reason, email us within
           90 days and we'll refund you in full, no questions asked.
         </DisclosurePanel>
@@ -26,7 +26,7 @@
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { ChevronUpIcon } from '@heroicons/react/solid'
+import { ChevronUpIcon } from '@heroicons/vue/solid'
 
 const props = defineProps({
     posts: {
