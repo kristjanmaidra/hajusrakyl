@@ -6,7 +6,7 @@
             <form class="flex flex-col w-full max-w-md gap-6" @submit.prevent="submit">
                 <div class="flex flex-col">
                     <label for="tile">Title</label>
-                    <input class="rounded active:border-inherit" name="description" v-model="form.title" type="text">
+                    <input class="rounded active:border-inherit" name="title" v-model="form.title" type="text">
                 </div>
                 <div class="flex flex-col">
                     <label for="">Description</label>

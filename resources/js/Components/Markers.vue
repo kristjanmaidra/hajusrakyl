@@ -2,20 +2,6 @@
     <div class="">
         <div class="w-full h-96">
             <div class="h-full" id="map" ref="map"></div>
-            <div class="w-full h-96">
-                <form class="p-10 bg-gray-200" id="form" @submit.prevent="submit">
-                    <Label for="name">Name</Label>
-                    <Input type="text" v-model="form.name" />
-                    <Label for="latitude">Latitude</Label>
-                    <Input type="text" id="input-lat" v-model="form.lat" />
-                    <Label for="longitude">Longitude</Label>
-                    <Input type="text" id="input-lng" v-model="form.lng" />
-                    <Label for="description">Description</Label>
-                    <Input type="text" v-model="form.description" />
-                    <br>
-                    <button class="rounded mt-3 bg-gray-800 text-white font-bold uppercase px-2 py-1" type="submit">Save</button>
-                </form>
-            </div>
         </div>
     </div>
 </template>
@@ -23,19 +9,6 @@
 <script setup>
 import { Loader } from "@googlemaps/js-api-loader";
 import { ref } from "vue";
-import { useForm } from '@inertiajs/inertia-vue3'
-
-const form = useForm({
-    name: "",
-    lat: "",
-    lng: "",
-    description: "",
-
-});
-
-const submit = () => {
-    form.post('/maps');
-}
 
 let map = ref(null);
 

@@ -15,7 +15,9 @@ class MapController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Map');
+        return Inertia::render('Map', [
+            'maps' => Map::all()
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class MapController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Map');
     }
 
     /**
@@ -36,7 +38,13 @@ class MapController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Map::create($request->validate([
+            'name' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+            'description' => 'required',
+        ]));
+        return redirect()->back();
     }
 
     /**
