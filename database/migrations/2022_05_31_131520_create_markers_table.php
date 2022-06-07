@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Blog;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('markers', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Blog::class)->constrained();
-            $table->longtext('comment');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('markers');
     }
 };

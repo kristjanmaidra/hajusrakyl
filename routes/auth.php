@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -63,5 +64,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/blog-edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog-edit/{blog}', [BlogController::class, 'update'])->name('blog.update');
     //delete
-    Route::post('/blog-delete/{blog}', [BlogController::class, 'destory'])->name('blog.delete');
+    Route::post('/blog-delete/{blog}', [BlogController::class, 'destroy'])->name('blog.delete');
+
+
+    Route::get('/blog/{blog}/comments-create', [CommentsController::class, 'create'])->name('blog.comments.create');
+    Route::post('/blog/{blog}/comments-create', [CommentsController::class, 'store'])->name('blog.comments.store');
 });

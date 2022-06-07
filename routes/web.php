@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\MapController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,33 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+//weather
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
-Route::get('/map', [MapController::class, 'index'])->name('map.index');
+
+//map
+Route::get('/map', [MapController::class, 'index'])->name('map');
+
+Route::get('/map-add', [MapController::class, 'create'])->name('map.add');
+Route::post('/map-add', [MapController::class, 'store']);
+
+Route::get('/map-edit/{map}', [MapController::class, 'edit'])->name('map.edit');
+Route::post('/map-edit/{map}', [MapController::class, 'update'])->name('map.update');
+
+Route::post('/map-delete/{map}', [MapController::class, 'destroy'])->name('map.delete');
+
+
+//blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
+//comment
+// Route::get('/blog/{blog}/comment-add', [CommentsController::class, 'create']);
+// Route::post('/blog/{blog}/comment-add', [CommentsController::class, 'store'])->name('blog.comment.add');
+
+Route::get('/blog', [CommentsController::class, 'index'])->name('blog');
+
+Route::get('/comment-add', [CommentsController::class, 'create'])->name('comment.add');
+Route::post('/comment-add', [CommentsController::class, 'store']);
+
 
 // Route::get('/blog-create', [BlogController::class, 'create'])->name('blog.create');
 

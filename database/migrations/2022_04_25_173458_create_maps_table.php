@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('latitude', 10, 8)->nullable();
-            $table->decimal('longitude', 11, 8)->nullable();
+            $table->double('longitude');
+            $table->double('latitude');
             $table->text('description');
             $table->timestamps();
         });

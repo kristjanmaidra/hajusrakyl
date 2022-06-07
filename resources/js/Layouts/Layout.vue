@@ -8,7 +8,7 @@
             <Link :href="route('blog')">
                 <p class="text-white">Blog</p>
             </Link>
-            <Link :href="route('map.index')">
+            <Link :href="route('map')">
                 <p class="text-white">Map</p>
             </Link>
         </div>

@@ -9,8 +9,9 @@ class Comments extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    // protected $fillable = ['comment', 'blog_id'];
 
-    public function blog(){
+    public function blog() {
         return $this->belongsTo(Blog::class);
     }
 }
